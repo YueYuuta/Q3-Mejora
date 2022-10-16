@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/styles/variables.scss';
+
+
+html body {
+  font-family: 'Noto Sans Mono', monospace;
+  // background-color: rgb(216, 219, 24);
+  margin: 0 ;
+  padding: 0;
+  
+  background-color: var(--background-color);
+}
+
+
+:root {
+  --primary-color: #505050ff;
+  --background-color: #e6e6e6ff;
+}

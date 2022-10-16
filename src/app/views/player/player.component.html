@@ -1,0 +1,27 @@
+<section class="player--container">
+    <div class="player--container__title">
+        <span>Mi Equipo</span>
+    </div>
+    <div class="player--container__input">
+        <input #input type="text" (keyup)="searchKey(input.value)" class="jg__input" placeholder="Buscar por nombre">
+    </div>
+    <div class="player--container__button">
+        <button (click)="create()" class="button__header">Agregar</button>
+    </div>
+    <main class="player--container__main">
+        <div *ngIf="playersSearch.length !==0; else elseBlock " class="player--container__body">
+            <app-card *ngFor=" let player of playersSearch" [player]="player" (clickEdit)="edit($event)"
+                (clickDelete)="delete($event)">
+            </app-card>
+        </div>
+        <ng-template #elseBlock>
+            <div class="player--container__notFount"><span>Not Found</span></div>
+        </ng-template>
+    </main>
+</section>
+
+<app-modal [title]="title">
+
+    <app-form></app-form>
+
+</app-modal>

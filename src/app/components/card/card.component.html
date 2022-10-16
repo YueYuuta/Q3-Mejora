@@ -1,0 +1,36 @@
+<div class="jg__card">
+    <div class="jg__card--header">
+        <div class="jg__container--image">
+            <img class="jg__image" [src]="player.image" alt="">
+        </div>
+        <div class="jg__shadow">
+        </div>
+        <div class="jg__name">
+            <p class="jg__text--primary">{{player.firstName}} {{player.lastName}}</p>
+        </div>
+    </div>
+    <div class="jg__card--body jg__flex--body">
+        <div class="jg__text--secondary">
+            <p class="jg__title">Ataque
+            <p>
+            <p>{{player.attack}}
+            <p>
+        </div>
+        <div class="jg__text--secondary">
+            <p class="jg__title">Defensa
+            <p>
+            <p>{{player.attack}}
+            <p>
+        </div>
+        <div class="jg__text--secondary">
+            <p class="jg__title">Skills
+            <p>
+            <p>{{player.attack}}
+            <p>
+        </div>
+    </div>
+    <div class="jg__card--footer jg__flex--footer">
+        <img (click)="onClickButtonEdit(player)" src="../assets/edit-icon.svg" />
+        <img (click)="onClickButtonDelete(player.id)" src="../assets/delete-icon.svg" />
+    </div>
+</div>

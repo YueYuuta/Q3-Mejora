@@ -1,0 +1,126 @@
+@import '../../../assets/styles/variables.scss';
+
+:host{
+  --headerHeight:320px;
+  --borderRadius:.7rem;
+  --textPrimary:rgb(49, 49, 49);
+}
+/** 
+** MAQUETA DE LA CARD USANDO CSS GRID
+**/
+.#{$brand}__card {
+  background-color:$primary-color;
+  display: grid;
+  border-radius: .7rem;
+  grid-template: "header" 
+                 "body" 
+                 "footer";
+                 &:hover{
+                  box-shadow: 0 0 .1rem .1rem rgba(12, 12, 12, 0.2);
+                  // transform: translateY(-2px);
+                  transition: 0.5s ease 0s;
+                 }
+                 &--header{
+                  grid-area: "header";
+                  display: grid;
+                  grid-template-columns: 1fr;
+                  grid-template-rows: 1fr;
+                 }
+                 &--body{
+                  grid-area: "body"; 
+                 }
+                 &--footer{
+                  grid-area: "footer";
+                  img{
+                    width:1.5rem ;
+                    height: 1.5rem;
+                    cursor: pointer;
+                  }
+                 }
+  
+}
+/** 
+** EL CONTENEDOR DE LA IMAGEN
+**/
+
+.#{$brand}__container--image{
+  grid-row:1/1 ;
+  grid-column: 1/1;
+  height: var(--headerHeight);
+}
+
+.#{$brand}__image{
+  height: 100%;
+  width: 100%;
+  border-radius: var(--borderRadius);
+ 
+}
+
+/** 
+** SEGUNDA CAPA PARA EL EFECTO DE SOMBREADO
+**/
+
+.#{$brand}__shadow{
+  grid-row:1/1 ;
+  grid-column: 1/1;
+  background-image: linear-gradient(to bottom, transparent,transparent, rgba(255, 255, 255, 1));
+  border-radius: var(--borderRadius);
+}
+/** 
+** TERCERA CAPA PARA EL NOMBRE DEL JUGADOR
+**/
+
+.#{$brand}__name{
+  grid-row:1/1 ;
+  grid-column: 1/1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+}
+
+/** 
+** POSICIONAR LOS ELEMENTOS DEL BODY USANDO CSS FLEXBOX
+**/
+
+.#{$brand}__flex--body{
+  padding: 1rem 1rem 0 1rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.1rem;  
+}
+
+/** 
+** DAR DISEÑO A LOS DIFERENTES TEXTOS DEL BODY
+**/
+
+.#{$brand}__text--primary{
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--textPrimary);
+}
+.#{$brand}__text--secondary{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $background-color;
+  text-align: center;
+}
+.#{$brand}__title{
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+
+/** 
+** POSICIONAR LOS ELEMENTOS DEL FOOTER USANDO CSS FLEXBOX
+**/
+
+.#{$brand}__flex--footer{
+  padding: {bottom: 1rem;};
+  display: flex;
+  justify-content: center;
+  gap: 3rem; 
+}
+
+

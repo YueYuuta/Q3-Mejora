@@ -1,0 +1,11 @@
+<ng-container *ngIf="display$ | async as display">
+    <section class="modal " [class.modal--show]="display === 'open'">
+        <div class="modal__container">
+            <div class="modal__header">
+                <p>{{title}} jugador</p>
+                <img class="" (click)="close()" src="../assets/close-icon.svg" />
+            </div>
+            <ng-content></ng-content>
+        </div>
+    </section>
+</ng-container>
