@@ -15,10 +15,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class CustomInputComponent implements OnInit, ControlValueAccessor {
   @Input() placeholder: string = '';
+  @Input() isValid: boolean = false;
+  @Input() isInvalid: boolean = false;
+  @Input() label: string = '';
   value: string = '';
 
-  onChange: Function = () => {};
-  onTouch: Function = () => {};
+  onChange!: Function;
+  onTouch!: Function;
 
   constructor() {}
 

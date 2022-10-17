@@ -6,26 +6,32 @@
         </div>
         <div>
             <div class="description">
-                <div>
-                    <label class="form__label" for="Nombre">Nombre</label>
-                    <!-- <app-custom-input formControlName="firstName"></app-custom-input> -->
-                    <input formControlName="firstName" type="text" class="form__input"
-                        [ngClass]="{'error': esInvalido(getControl('firstName')), 'valid' : esValido(getControl('firstName')) }">
-                    <span *ngIf="esRequerido(getControl('firstName'))" class="error__message">nombre no valido</span>
-                </div>
 
-                <div>
-                    <label class="form__label" for="Apellido">Apellido</label>
-                    <input formControlName="lastName" type="text" class="form__input error"
-                        [ngClass]="{'error': esInvalido(getControl('lastName')), 'valid' : esValido(getControl('lastName')) }">
-                    <span *ngIf="esInvalido(getControl('lastName'))" class="error__message">apellido no valido</span>
-                </div>
-                <div>
-                    <label class="form__label" for="Imagen">Imagen</label>
-                    <input formControlName="image" type="text" class="form__input"
-                        [ngClass]="{'error': esInvalido(getControl('image')), 'valid' : esValido(getControl('image')) }">
-                    <span *ngIf="esInvalido(getControl('image'))" class="error__message">imagen no valida</span>
-                </div>
+                <!-- <div>
+                        {{esInvalido(getControl('firstName'))}}
+                    </div> -->
+                <!-- <label class="form__label" for="Nombre">Nombre</label> -->
+                <app-custom-input [isValid]="esValido(getControl('firstName'))"
+                    [isInvalid]="esInvalido(getControl('firstName'))" label="Nombre" formControlName="firstName">
+                </app-custom-input>
+
+                <!-- <app-custom-input [parentForm]="playerForm" fieldName="firstName" label="Nombre"
+                        formControlName="firstName">
+                    </app-custom-input> -->
+                <!-- <input formControlName="firstName" type="text" class="form__input"
+                        [ngClass]="{'error': esInvalido(getControl('firstName')), 'valid' : esValido(getControl('firstName')) }">
+                    <span *ngIf="esRequerido(getControl('firstName'))" class="error__message">nombre no valido</span> -->
+
+
+
+                <app-custom-input [isValid]="esValido(getControl('lastName'))"
+                    [isInvalid]="esInvalido(getControl('lastName'))" label="Apellido" formControlName="lastName">
+                </app-custom-input>
+
+                <app-custom-input [isValid]="esValido(getControl('image'))"
+                    [isInvalid]="esInvalido(getControl('image'))" label="Imagen" formControlName="image">
+                </app-custom-input>
+
                 <div>
                     <label for="posicion" class="form__label">Posicion</label>
                     <select class="form__input" name="" id="" formControlName="idPosition">
