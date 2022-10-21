@@ -13,7 +13,6 @@ import {
   styleUrls: ['./custom-button.component.scss'],
 })
 export class CustomButtonComponent implements OnInit {
-  @Input() text: string = 'boton';
   @Input() disabled: boolean = false;
   @Input() color: string = 'white';
   @Input() bColor: string = '#505050ff';

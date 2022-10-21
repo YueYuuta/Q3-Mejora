@@ -7,7 +7,17 @@ import { IReadPlayerModel } from '../../models/read-player.model';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() player!: IReadPlayerModel;
+  @Input() player: IReadPlayerModel = {
+    attack: 0,
+    defense: 0,
+    firstName: '',
+    id: 0,
+    idAuthor: 0,
+    idPosition: 0,
+    image: '',
+    lastName: '',
+    skills: 0,
+  };
   @Output() clickEdit = new EventEmitter<IReadPlayerModel>();
   @Output() clickDelete = new EventEmitter<number>();
 

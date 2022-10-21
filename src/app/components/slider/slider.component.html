@@ -1,5 +1,11 @@
-<label> {{ label }}</label>
+<app-custom-label [label]="label"></app-custom-label>
 <div class="input-container">
   <input type="range" [formControl]="inputRange" data-testid="input" />
   <a style="font-size: 1.5rem; width: 10%; padding-left: 5%;">{{inputRange.value}}</a>
 </div>
+
+<!-- <label> {{ label }}</label>
+<div class="input-container">
+  <input type="range" [formControl]="input" data-testid="input" />
+  <a style="font-size: 1.5rem; width: 10%; padding-left: 5%;">{{input.value}}</a>
+</div> -->

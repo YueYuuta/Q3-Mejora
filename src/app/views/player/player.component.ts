@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
 import { IReadPlayerModel } from '../../models/read-player.model';
 import { StatePlayerService } from '../../services/state-player.service';
-import { iif, of, tap, Subject, mergeMap } from 'rxjs';
+import { of, Subject, takeUntil, mergeMap } from 'rxjs';
 import { EquiposService } from '../../services/equipos.service';
 
 @Component({
@@ -35,39 +35,19 @@ export class PlayerComponent implements OnInit, OnDestroy {
   getAll(): void {
     this._statePlayerService.getPlayers
       .pipe(
-        // takeUntil(this.stop$),
-        mergeMap((data) =>
-          iif(
-            () => data.length === 0,
-            this._playerService
-              .getAll()
-              .pipe(
-                tap(
-                  (playersBakc) =>
-                    (this._statePlayerService.setPlayers = playersBakc)
-                )
-              ),
-            of(data)
-          )
-        )
+        takeUntil(this.stop$),
+        mergeMap((data) => {
+          if (data.length === 0) {
+            return this._playerService.getAll();
+          } else {
+            return of(data);
+          }
+        })
       )
       .subscribe((statePlayers: IReadPlayerModel[]) => {
-        // console.log('unico subscribe');
         this.players = statePlayers;
         this.playersSearch = statePlayers;
       });
-    // this._statePlayerService.getPlayers.subscribe((players) => {
-    //   console.log('subscribe 1');
-    //   if (players.length === 0) {
-    //     this._playerService.getAll().subscribe((playersBack) => {
-    //       console.log('subscribe 2');
-    //       this._statePlayerService.setPlayers = playersBack;
-    //     });
-    //   } else {
-    //     this.players = players;
-    //     this.playersSearch = players;
-    //   }
-    // });
   }
 
   searchKey(value: string) {
@@ -91,7 +71,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.open();
   }
   edit(player: IReadPlayerModel) {
-    console.log(player, 'asdadasdasda');
     this._statePlayerService.setSelectedPlayer = player;
     this.open();
   }

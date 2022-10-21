@@ -1,4 +1,9 @@
-<label class="form__label" for="Nombre">{{label}}</label>
+<app-custom-label [label]="label"></app-custom-label>
 <input type="text" class="custom--input" [(ngModel)]="value" (ngModelChange)="onChange($event)"
     [ngClass]="{'error': isInvalid, 'valid' : isValid }" (blur)="onTouch()" [placeholder]="placeholder">
-<span *ngIf="isInvalid" class=" error__message">{{label}} no válido</span>
+<app-custom-error-message *ngIf="isInvalid" message="{{label}} no válido"></app-custom-error-message>
+
+<!-- <label class="form__label" for="Nombre">{{label}}</label>
+<input type="text" class="custom--input" [formControl]="input"
+    [ngClass]="{'error': isInvalid, 'valid' : isValid }" [placeholder]="placeholder">
+<span *ngIf="isInvalid" class=" error__message">{{label}} no válido</span> -->

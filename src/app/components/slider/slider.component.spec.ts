@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { findEl, setFieldValue } from '../../spec-helpers/element.spect-helper';
+import { CustomLabelComponent } from '../atoms/custom-label/custom-label.component';
 
 import { SliderComponent } from './slider.component';
 
@@ -27,7 +28,7 @@ describe('SliderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule],
-      declarations: [SliderComponent, HostComponent],
+      declarations: [SliderComponent, HostComponent, CustomLabelComponent],
       schemas: [],
     }).compileComponents();
   });

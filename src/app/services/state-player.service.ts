@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+// import { ICreatePlayerModel } from '../models/create-player.model';
 import { IReadPlayerModel } from '../models/read-player.model';
 // const mock = [
 //   {
@@ -41,6 +42,10 @@ export class StatePlayerService {
 
   set setPlayers(players: IReadPlayerModel[]) {
     this._players.next(players);
+  }
+  set setPlayer(player: IReadPlayerModel) {
+    const newPlayers: IReadPlayerModel[] = [player, ...this._players.value];
+    this.setPlayers = newPlayers;
   }
 
   get getSelectedPlayer(): Observable<IReadPlayerModel | null> {

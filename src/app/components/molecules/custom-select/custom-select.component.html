@@ -1,0 +1,8 @@
+<app-custom-label [label]="label"></app-custom-label>
+<select [(ngModel)]="value" (ngModelChange)="onChange($event)" class="custom--input" name="" id="">
+    <option value="">{{optionDefault}}</option>
+    <option *ngFor="let position of positions" [value]="position.id">
+
+        {{position.description}}</option>
+
+</select>

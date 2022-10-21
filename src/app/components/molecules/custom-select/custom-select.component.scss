@@ -20,26 +20,3 @@
       }
   }
   
-  .error{
-      border: 3px solid rgb(151, 8, 8);
-      &:focus{
-          border-color: rgb(82, 2, 2);
-      }
-  }
-  
-  .valid{
-      border: 3px solid rgb(6, 138, 35);
-      &:focus{
-          border-color: rgb(3, 65, 13);
-      }
-  }
-  
-
-
-
-.error{
-  border: 3px solid rgb(151, 8, 8);
-  &:focus{
-      border-color: rgb(82, 2, 2);
-  }
-}

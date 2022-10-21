@@ -6,11 +6,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { Observable, of } from 'rxjs';
-// import { concatMap, forkJoin } from 'rxjs';
-import { EquiposService } from 'src/app/services/equipos.service';
-import { StatePlayerService } from 'src/app/services/state-player.service';
+import { IReadPlayerModel } from '../../models/read-player.model';
+import { EquiposService } from '../../services/equipos.service';
+import { ModalService } from '../../services/modal.service';
+import { StatePlayerService } from '../../services/state-player.service';
 import { IReadPlayerPositionModel } from '../../models/read-player-position.model';
-// import { StatePlayerService } from '../../services/state-player.service';
 
 @Component({
   selector: 'app-form',
@@ -18,13 +18,13 @@ import { IReadPlayerPositionModel } from '../../models/read-player-position.mode
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  // positions: IReadPlayerPositionModel[] = [];
   playerForm!: FormGroup;
   positions$: Observable<IReadPlayerPositionModel[]> = of([]);
   constructor(
     private readonly fb: FormBuilder,
     private readonly _statePlayerService: StatePlayerService,
-    private readonly _playerServices: EquiposService
+    private readonly _playerServices: EquiposService,
+    private readonly _modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -34,8 +34,23 @@ export class FormComponent implements OnInit {
   getPosition(): void {}
 
   save() {
-    console.log('form', this.playerForm.value);
+    const playerForm = this.playerForm.value;
+    const savePlayer: IReadPlayerModel = {
+      id: 10,
+      attack: playerForm.attack,
+      defense: playerForm.defense,
+      firstName: playerForm.firstName,
+      idAuthor: playerForm.idAuthor,
+      idPosition: playerForm.idPosition,
+      image: playerForm.image,
+      lastName: playerForm.lastName,
+      skills: playerForm.skills,
+    };
+    console.log(savePlayer);
+    this._statePlayerService.setPlayer = savePlayer;
+    this._modalService.close();
   }
+
   private init(): void {
     this.positions$ = this._playerServices.getAllPosition();
     this._statePlayerService.getSelectedPlayer.subscribe((player) => {
@@ -43,7 +58,6 @@ export class FormComponent implements OnInit {
         this.playerForm.patchValue(player);
       } else {
         this.playerForm.reset();
-        // this.getControl('attack').setValue(0);
       }
     });
   }

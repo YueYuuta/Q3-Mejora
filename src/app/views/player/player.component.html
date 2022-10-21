@@ -6,11 +6,13 @@
         <input #input type="text" (keyup)="searchKey(input.value)" class="jg__input" placeholder="Buscar por nombre">
     </div>
     <div class="player--container__button">
-        <button (click)="create()" class="button__header">Agregar</button>
+        <app-custom-button (btnClick)="create()" [width]="'9rem'" [height]="'3rem'">
+            <p>Agregar</p>
+        </app-custom-button>
     </div>
     <main class="player--container__main">
-        <div *ngIf="playersSearch.length !==0; else elseBlock " class="player--container__body">
-            <app-card *ngFor=" let player of playersSearch" [player]="player" (clickEdit)="edit($event)"
+        <div *ngIf="playersSearch.length !==0; else elseBlock  " class="player--container__body">
+            <app-card *ngFor=" let player of playersSearch " [player]="player" (clickEdit)="edit($event)"
                 (clickDelete)="delete($event)">
             </app-card>
         </div>

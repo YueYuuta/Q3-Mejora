@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomButtonComponent } from './custom-button.component';
+import { CustomErrorMessageComponent } from './custom-error-message.component';
 
-describe('CustomButtonComponent', () => {
-  let component: CustomButtonComponent;
-  let fixture: ComponentFixture<CustomButtonComponent>;
+describe('CustomErrorMessageComponent', () => {
+  let component: CustomErrorMessageComponent;
+  let fixture: ComponentFixture<CustomErrorMessageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomButtonComponent ]
+      declarations: [ CustomErrorMessageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomButtonComponent);
+    fixture = TestBed.createComponent(CustomErrorMessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

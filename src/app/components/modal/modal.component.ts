@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ModalService } from 'src/app/services/modal.service';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-modal',

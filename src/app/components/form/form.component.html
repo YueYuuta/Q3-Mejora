@@ -6,74 +6,26 @@
         </div>
         <div>
             <div class="description">
-
-                <!-- <div>
-                        {{esInvalido(getControl('firstName'))}}
-                    </div> -->
-                <!-- <label class="form__label" for="Nombre">Nombre</label> -->
                 <app-custom-input [isValid]="esValido(getControl('firstName'))"
                     [isInvalid]="esInvalido(getControl('firstName'))" label="Nombre" formControlName="firstName">
                 </app-custom-input>
-
-                <!-- <app-custom-input [parentForm]="playerForm" fieldName="firstName" label="Nombre"
-                        formControlName="firstName">
-                    </app-custom-input> -->
-                <!-- <input formControlName="firstName" type="text" class="form__input"
-                        [ngClass]="{'error': esInvalido(getControl('firstName')), 'valid' : esValido(getControl('firstName')) }">
-                    <span *ngIf="esRequerido(getControl('firstName'))" class="error__message">nombre no valido</span> -->
-
-
-
                 <app-custom-input [isValid]="esValido(getControl('lastName'))"
                     [isInvalid]="esInvalido(getControl('lastName'))" label="Apellido" formControlName="lastName">
                 </app-custom-input>
-
                 <app-custom-input [isValid]="esValido(getControl('image'))"
                     [isInvalid]="esInvalido(getControl('image'))" label="Imagen" formControlName="image">
                 </app-custom-input>
-
-                <div>
-                    <label for="posicion" class="form__label">Posicion</label>
-                    <select class="form__input" name="" id="" formControlName="idPosition">
-                        <option value="">Seleccione la posicion</option>
-                        <option *ngFor="let position of positions$ | async" [value]="position.id">
-
-                            {{position.description}}</option>
-
-                    </select>
-                    <!-- <span class="error__message">la posicion es requerida</span> -->
-                </div>
-
+                <app-custom-select formControlName="idPosition" [positions]="positions$ | async"
+                    optionDefault="Seleccione la posicion" label="Posicion"></app-custom-select>
             </div>
-
-
-            <div>
-                <app-slider formControlName="attack" [label]="'Ataque'"></app-slider>
-                <!-- <span class="error__message">el ataque es requerido</span> -->
-            </div>
-
-            <div>
-                <app-slider formControlName="defense" [label]="'Defensa'"></app-slider>
-                <!-- <span class="error__message">la defensa es requerida</span> -->
-
-            </div>
-
-            <div>
-                <app-slider formControlName="skills" [label]="'Skills'"></app-slider>
-                <!-- <span class="error__message">la skill es requerida</span> -->
-            </div>
-
-
-
-
+            <app-slider formControlName="attack" [label]="'Ataque'"></app-slider>
+            <app-slider formControlName="defense" [label]="'Defensa'"></app-slider>
+            <app-slider formControlName="skills" [label]="'Skills'"></app-slider>
             <div class="button__container">
-                <app-custom-button [disabled]="playerForm.invalid" [width]="'9rem'" [height]="'3rem'" [text]="'Crear'">
+                <app-custom-button [disabled]="playerForm.invalid" [width]="'9rem'" [height]="'3rem'">
+                    <p>Guardar</p>
                 </app-custom-button>
             </div>
-
-
         </div>
-
-
     </div>
 </form>

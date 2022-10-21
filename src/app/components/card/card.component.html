@@ -30,7 +30,13 @@
         </div>
     </div>
     <div class="jg__card--footer jg__flex--footer">
-        <img (click)="onClickButtonEdit(player)" src="../assets/edit-icon.svg" />
-        <img (click)="onClickButtonDelete(player.id)" src="../assets/delete-icon.svg" />
+        <app-custom-button id="1" (btnClick)="onClickButtonEdit(player)" [height]="'3rem'">
+            <img (click)="onClickButtonEdit(player)" src="../assets/edit-icon.svg" />
+        </app-custom-button>
+        <app-custom-button id="2" (btnClick)="onClickButtonEdit(player)" [height]="'3rem'">
+            <img (click)="onClickButtonDelete(player.id)" src="../assets/delete-icon.svg" />
+        </app-custom-button>
+        <!-- <img (click)="onClickButtonEdit(player)" src="../assets/edit-icon.svg" />
+        <img (click)="onClickButtonDelete(player.id)" src="../assets/delete-icon.svg" /> -->
     </div>
 </div>

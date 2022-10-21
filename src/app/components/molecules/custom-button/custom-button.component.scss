@@ -1,0 +1,36 @@
+@import '../../../../assets/styles/variables.scss';
+:host {
+  --color: white;
+  --bColor: var(--primary-color);
+  --height: 2rem;
+  --width: auto;
+  --bColorHover: rgb(41, 40, 40);
+}
+.jg__button {
+  display: inline-block;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  font-size: 1rem;
+  height: var(--height);
+  background-color: var(--bColor);
+  color: var(--color);
+
+  width: var(--width);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  &:hover {
+    background-color: var(--bColorHover);
+  }
+  &:disabled {
+    // pointer-events: ;
+    cursor: not-allowed;
+    &:disabled {
+      background-color: var(--bColor);
+      opacity: 0.7;
+    }
+  }
+}

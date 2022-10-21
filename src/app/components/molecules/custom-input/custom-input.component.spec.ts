@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomLabelComponent } from '../../atoms/custom-label/custom-label.component';
 
 import { CustomInputComponent } from './custom-input.component';
 
@@ -28,7 +29,7 @@ describe('CustomInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CustomInputComponent, HostComponent],
+      declarations: [CustomInputComponent, HostComponent, CustomLabelComponent],
       imports: [FormsModule, ReactiveFormsModule],
     }).compileComponents();
   });

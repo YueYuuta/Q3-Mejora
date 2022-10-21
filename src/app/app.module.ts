@@ -11,11 +11,27 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './components/modal/modal.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './components/form/form.component';
-import { CustomButtonComponent } from './components/custom-button/custom-button.component';
+import { CustomButtonComponent } from './components/molecules/custom-button/custom-button.component';
 import { CustomInputComponent } from './components/molecules/custom-input/custom-input.component';
+import { CustomSelectComponent } from './components/molecules/custom-select/custom-select.component';
+import { CustomLabelComponent } from './components/atoms/custom-label/custom-label.component';
+import { CustomErrorMessageComponent } from './components/atoms/custom-error-message/custom-error-message.component';
 
 @NgModule({
-  declarations: [AppComponent, SliderComponent, CardComponent, PlayerComponent, ModalComponent, HeaderComponent, FormComponent, CustomButtonComponent, CustomInputComponent],
+  declarations: [
+    AppComponent,
+    SliderComponent,
+    CardComponent,
+    PlayerComponent,
+    ModalComponent,
+    HeaderComponent,
+    FormComponent,
+    CustomButtonComponent,
+    CustomInputComponent,
+    CustomSelectComponent,
+    CustomLabelComponent,
+    CustomErrorMessageComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

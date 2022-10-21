@@ -64,3 +64,55 @@ export class SliderComponent
     this.onTouch = onTouched;
   }
 }
+
+// antiguo
+// import { Component, Input } from '@angular/core';
+// import {
+//   ControlValueAccessor,
+//   FormControl,
+//   NG_VALUE_ACCESSOR,
+// } from '@angular/forms';
+
+// @Component({
+//   selector: 'app-slider',
+//   templateUrl: './slider.component.html',
+//   styleUrls: ['./slider.component.scss'],
+//   providers: [
+//     {
+//       provide: NG_VALUE_ACCESSOR,
+//       useExisting: SliderComponent,
+//       multi: true,
+//     },
+//   ],
+// })
+// export class SliderComponent implements ControlValueAccessor {
+//   input: FormControl = new FormControl();
+//   @Input()
+//   public label: string = '';
+//   field = '0';
+
+//   constructor() {}
+
+//   onChange: any = (value: string) => {};
+//   onTouch: any = () => {};
+
+//   // This will will write the value to the view if the the value changes occur on the model programmatically
+//   writeValue(value: any) {
+//     let defaultValue = '0';
+//     if (value) {
+//       defaultValue = value;
+//     }
+//     this.input.setValue(defaultValue);
+//     this.onChange(defaultValue);
+//   }
+
+//   /* When the value in the UI is changed, this method will invoke a callback function */
+//   registerOnChange(fn: Function) {
+//     this.onChange = fn;
+//   }
+
+//   // When the element is touched, this method will get called
+//   registerOnTouched(onTouched: Function) {
+//     this.onTouch = onTouched;
+//   }
+// }
