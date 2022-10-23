@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
 import { IReadPlayerModel } from '../../models/read-player.model';
 import { StatePlayerService } from '../../services/state-player.service';
-import { of, Subject, takeUntil, mergeMap } from 'rxjs';
+import { of, Subject, takeUntil, switchMap, Observable } from 'rxjs';
 import { EquiposService } from '../../services/equipos.service';
 
 @Component({
@@ -11,10 +11,11 @@ import { EquiposService } from '../../services/equipos.service';
   styleUrls: ['./player.component.scss'],
 })
 export class PlayerComponent implements OnInit, OnDestroy {
+  inputSearch: string = '';
   private stop$ = new Subject<void>();
   title = 'Agregar';
-  players: IReadPlayerModel[] = [];
-  playersSearch: IReadPlayerModel[] = [];
+  players!: Observable<IReadPlayerModel[]>;
+  // playersSearch: IReadPlayerModel[] = [];
   open() {
     this.modalService.open();
   }
@@ -33,34 +34,31 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   getAll(): void {
-    this._statePlayerService.getPlayers
-      .pipe(
-        takeUntil(this.stop$),
-        mergeMap((data) => {
-          if (data.length === 0) {
-            return this._playerService.getAll();
-          } else {
-            return of(data);
-          }
-        })
-      )
-      .subscribe((statePlayers: IReadPlayerModel[]) => {
-        this.players = statePlayers;
-        this.playersSearch = statePlayers;
-      });
+    const callTheAllPlayers = (players: IReadPlayerModel[]) => {
+      if (players.length === 0) {
+        return this._playerService.getAll();
+      } else {
+        return of(players);
+      }
+    };
+
+    this.players = this._statePlayerService.getPlayers.pipe(
+      takeUntil(this.stop$),
+      switchMap(callTheAllPlayers)
+    );
   }
 
-  searchKey(value: string) {
-    if (value.length > 0) {
-      this.playersSearch = this.players.filter(
-        (player: IReadPlayerModel) =>
-          player.firstName.toLowerCase().indexOf(value.toLowerCase()) > -1 ||
-          player.lastName.toLowerCase().indexOf(value.toLowerCase()) > -1
-      );
-    } else {
-      this.playersSearch = this.players;
-    }
-  }
+  // searchKey(value: string) {
+  //   if (value.length > 0) {
+  //     this.playersSearch = this.players.filter(
+  //       (player: IReadPlayerModel) =>
+  //         player.firstName.toLowerCase().indexOf(value.toLowerCase()) > -1 ||
+  //         player.lastName.toLowerCase().indexOf(value.toLowerCase()) > -1
+  //     );
+  //   } else {
+  //     this.playersSearch = this.players;
+  //   }
+  // }
 
   delete(player: number) {
     console.log('eliminar', player);

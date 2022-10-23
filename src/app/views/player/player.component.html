@@ -3,7 +3,8 @@
         <span>Mi Equipo</span>
     </div>
     <div class="player--container__input">
-        <input #input type="text" (keyup)="searchKey(input.value)" class="jg__input" placeholder="Buscar por nombre">
+        <input type="text" [(ngModel)]="inputSearch" class="jg__input" placeholder="Buscar por nombre">
+        <!-- <input #input type="text" (keyup)="searchKey(input.value)" class="jg__input" placeholder="Buscar por nombre"> -->
     </div>
     <div class="player--container__button">
         <app-custom-button (btnClick)="create()" [width]="'9rem'" [height]="'3rem'">
@@ -11,13 +12,13 @@
         </app-custom-button>
     </div>
     <main class="player--container__main">
-        <div *ngIf="playersSearch.length !==0; else elseBlock  " class="player--container__body">
-            <app-card *ngFor=" let player of playersSearch " [player]="player" (clickEdit)="edit($event)"
-                (clickDelete)="delete($event)">
+        <div *ngIf=" players | async as playersSub; else elseBlock" class="player--container__body">
+            <app-card *ngFor=" let player of playersSub | search: inputSearch" [player]="player"
+                (clickEdit)="edit($event)" (clickDelete)="delete($event)">
             </app-card>
         </div>
         <ng-template #elseBlock>
-            <div class="player--container__notFount"><span>Not Found</span></div>
+            <div class="player--container__notFount"><span>Loading....</span></div>
         </ng-template>
     </main>
 </section>

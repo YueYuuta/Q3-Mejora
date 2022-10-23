@@ -16,6 +16,7 @@ import { CustomInputComponent } from './components/molecules/custom-input/custom
 import { CustomSelectComponent } from './components/molecules/custom-select/custom-select.component';
 import { CustomLabelComponent } from './components/atoms/custom-label/custom-label.component';
 import { CustomErrorMessageComponent } from './components/atoms/custom-error-message/custom-error-message.component';
+import { SearchFilterPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CustomErrorMessageComponent } from './components/atoms/custom-error-mes
     CustomSelectComponent,
     CustomLabelComponent,
     CustomErrorMessageComponent,
+    SearchFilterPipe,
   ],
   imports: [
     BrowserModule,
